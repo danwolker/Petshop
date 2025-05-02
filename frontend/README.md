@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+# Frontend React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto frontend construído com **React 19**, **TypeScript**, **Tailwind CSS** e diversas bibliotecas modernas para desenvolvimento de interfaces responsivas, navegação via `react-router-dom` e ícones `FontAwesome`.
 
-## Available Scripts
+## 📦 Tecnologias utilizadas
 
-In the project directory, you can run:
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router DOM v7](https://reactrouter.com/en/main)
+- [FontAwesome React](https://fontawesome.com/v6/docs/web/use-with/react/)
+- [Swiper](https://swiperjs.com/) – carrosséis responsivos
+- [Jest + Testing Library](https://testing-library.com/) – testes unitários
 
-### `yarn start`
+## 📁 Estrutura do Projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── routes/
+│   ├── styles/
+│   └── App.tsx
+├── tailwind.config.js
+├── tsconfig.json
+├── package.json
+└── README.md
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🚀 Scripts disponíveis
 
-### `yarn test`
+Use os scripts abaixo com `yarn`:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Comando      | Descrição                                               |
+| ------------ | ------------------------------------------------------- |
+| `yarn start` | Inicia o servidor de desenvolvimento (`localhost:3000`) |
+| `yarn build` | Compila o projeto para produção                         |
+| `yarn test`  | Executa os testes com `Jest`                            |
+| `yarn eject` | Eject do Create React App (não recomendado)             |
 
-### `yarn build`
+## ✅ Testes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Este projeto está configurado com o [Testing Library](https://testing-library.com/) e `jest-dom`. Para rodar os testes, use:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+yarn test
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🎨 Estilização com Tailwind
 
-### `yarn eject`
+O projeto utiliza Tailwind CSS versão `3.4.1`, com suporte a `PostCSS` e `autoprefixer` para estilização moderna e responsiva.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Exemplo de uso:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```tsx
+<div className="flex flex-col items-center p-4">
+  <h1 className="text-2xl font-bold text-blue-500">Bem-vindo</h1>
+</div>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🧪 Tipagens
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Este projeto inclui tipagens para:
 
-## Learn More
+- React
+- React DOM
+- React Router DOM
+- Jest
+- Tailwind CSS
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌐 Compatibilidade entre navegadores
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Configuração de compatibilidade via `browserslist` para garantir suporte a:
+
+- Últimas versões do Chrome, Firefox e Safari
+- Produção: navegadores com mais de 0.2% de uso
+
+## 📁 Gerenciador de Pacotes
+
+Este projeto usa o **Yarn 4.7.0**, com o seguinte comando:
+
+```bash
+yarn install
+```
+
+---
+
+## 🧑‍💻 Contribuindo
+
+Sinta-se livre para abrir issues, sugerir melhorias ou enviar pull requests. 💬
+
+---
