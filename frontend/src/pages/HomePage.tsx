@@ -1,3 +1,6 @@
+import Navbar from "../components/controllers/Navbar";
+import CategoryBar from "../components/controllers/CategoryBar";
+import DeliveryBanner from "../components/Banners/DeliveryBanner";
 import Header from "../components/Banners/Header";
 import SubHeader from "../components/Banners/SubHeader";
 import ExclusiveSection from "../components/sections/ExclusiveSection";
@@ -6,6 +9,7 @@ import ProductsList from "../components/products/ProductsList";
 import SubPharmacy from "../components/sections/SubPharmacy";
 import PubliSocialMedia from "../components/sections/PubliSocialMedia";
 import TestimonialsList from "../components/sections/TestimonialsList";
+import BenefitsSection from "../components/sections/BenefitsSection";
 
 interface Product {
   id: number;
@@ -34,49 +38,67 @@ export default function HomePage({
   removeProductFromCart,
 }: HomePageProps) {
   return (
-    <div className="space-y-12">
-      <Header />
-      <SubHeader />
-      <ExclusiveSection />
-      <div className="page-inner-content">
-        <div className="section-title">
-          <div className="underline"></div>
-        </div>
+    <>
+      <Navbar
+        setShowSidebarCart={setShowSidebarCart}
+        selectedProducts={selectedProducts}
+      />
+      <CategoryBar />
 
-        <div className="main-content">
-          <ProductsList products={products} addProductToCart={addProductToCart} />
-        </div>
+      {/* DELIVERY BANNER FIXADO LOGO ABAIXO DA CATEGORYBAR */}
+      <div className="px-4 py-2 bg-white sm:px-6 lg:px-8">
+        <DeliveryBanner />
       </div>
 
-      <PetFood />
-      <div className="page-inner-content">
+      {/* RESTANTE DO CONTEÚDO DA PÁGINA */}
+      <div className="px-4 mt-8 space-y-6 sm:px-6 lg:px-8">
+        <Header />
+        <SubHeader />
+        <BenefitsSection />
+        <ExclusiveSection />
+
         <div className="section-title">
           <h2 className="mb-4 text-2xl font-bold text-center text-purple-800">
-            Farmácias Products
+            Produtos em destaque
           </h2>
-          <div className="underline"></div>
+          <div className="w-24 h-1 mx-auto underline bg-purple-600 rounded"></div>
         </div>
 
-        <div className="main-content">
-          <ProductsList products={products} addProductToCart={addProductToCart} />
+        <ProductsList
+          products={products}
+          addProductToCart={addProductToCart}
+        />
+
+        <PetFood />
+
+        <div className="section-title">
+          <h2 className="mb-4 text-2xl font-bold text-center text-purple-800">
+            Farmácia
+          </h2>
+          <div className="w-24 h-1 mx-auto underline bg-purple-600 rounded"></div>
         </div>
 
+        <ProductsList
+          products={products}
+          addProductToCart={addProductToCart}
+        />
         <SubPharmacy />
-      </div>
-      <div className="page-inner-content">
+
         <div className="section-title">
           <h2 className="mb-4 text-2xl font-bold text-center text-purple-800">
             Pet Food
           </h2>
-          <div className="underline"></div>
+          <div className="w-24 h-1 mx-auto underline bg-purple-600 rounded"></div>
         </div>
 
-        <div className="main-content">
-          <ProductsList products={products} addProductToCart={addProductToCart} />
-        </div>
+        <ProductsList
+          products={products}
+          addProductToCart={addProductToCart}
+        />
+
+        <PubliSocialMedia />
+        <TestimonialsList />
       </div>
-      <PubliSocialMedia />
-      <TestimonialsList />
-    </div>
+    </>
   );
 }

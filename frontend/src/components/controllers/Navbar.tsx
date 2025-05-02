@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 interface NavbarProps {
   setShowSidebarCart: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,46 +13,33 @@ export default function Navbar({ setShowSidebarCart, selectedProducts }: NavbarP
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-pink-100 shadow-sm fixed top-0 left-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img
-            src="/images/logoprincipal.png"
-            alt="Das Gurias"
-            className="h-10 w-auto"
-          />
+    <header className="fixed top-0 left-0 z-50 w-full bg-pink-100 shadow-md">
+      <div className="flex flex-wrap items-center justify-between px-4 py-3 mx-auto max-w-7xl">
+        <Link to="/" className="flex items-center gap-3">
+          <img src="/images/logoprincipal.png" alt="Das Gurias" className="w-auto h-10" />
         </Link>
 
-        {/* Menu desktop */}
-        <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-800">
-          <Link to="/">Início</Link>
-          <Link to="/caes">Para seu Cão</Link>
-          <Link to="/gatos">Para seu Gato</Link>
-          <Link to="/pets">Para Todos Pets</Link>
-          <Link to="/farmacia">Fármacia</Link>
-          <Link to="/promocoes">Promoções</Link>
-        </nav>
+        {/* Busca maior */}
+        <div className="relative flex-1 hidden mx-6 sm:flex">
+          <input
+            type="text"
+            placeholder="Procurar produtos, categorias..."
+            className="w-full px-5 py-2 text-sm border border-gray-300 rounded-full focus:outline-none"
+          />
+          <FontAwesomeIcon icon={faSearch} className="absolute right-4 top-2.5 text-gray-500 text-sm" />
+        </div>
 
-        {/* Ações (busca, carrinho, menu mobile) */}
-        <div className="flex items-center gap-4">
-          {/* Campo de busca - visível a partir do sm */}
-          <div className="relative hidden sm:flex items-center">
-            <input
-              type="text"
-              placeholder="Procurar"
-              className="border border-gray-300 rounded-full px-4 py-1 text-sm focus:outline-none"
-            />
-            <FontAwesomeIcon
-              icon={faSearch}
-              className="absolute right-3 text-gray-500 text-sm"
-            />
-          </div>
+        <div className="flex items-center gap-4 mt-2 sm:mt-0">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faInstagram} className="text-xl text-purple-700 hover:text-purple-900" />
+          </a>
+          <a href="https://wa.me/seunumero" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faWhatsapp} className="text-xl text-green-600 hover:text-green-700" />
+          </a>
 
-          {/* Carrinho */}
           <button
             onClick={() => setShowSidebarCart(true)}
-            className="relative text-gray-700 hover:text-gray-900"
+            className="relative text-gray-700 hover:text-violet-800"
           >
             <FontAwesomeIcon icon={faShoppingCart} className="text-xl" />
             {selectedProducts.length > 0 && (
@@ -61,26 +49,25 @@ export default function Navbar({ setShowSidebarCart, selectedProducts }: NavbarP
             )}
           </button>
 
-          {/* Botão menu mobile */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-xl text-gray-700"
+            className="text-xl text-gray-700 md:hidden"
           >
             <FontAwesomeIcon icon={faBars} />
           </button>
         </div>
       </div>
 
-      {/* Menu mobile */}
+      {/* Menu Mobile */}
       {menuOpen && (
-        <div className="md:hidden px-4 pb-4 bg-pink-100">
+        <div className="px-4 pb-4 bg-pink-100 md:hidden">
           <nav className="flex flex-col gap-3 text-sm font-medium text-gray-800">
-            <Link to="/" onClick={() => setMenuOpen(false)}>Início</Link>
-            <Link to="/caes" onClick={() => setMenuOpen(false)}>Para seu Cão</Link>
-            <Link to="/gatos" onClick={() => setMenuOpen(false)}>Para seu Gato</Link>
-            <Link to="/pets" onClick={() => setMenuOpen(false)}>Para Todos Pets</Link>
-            <Link to="/farmacia" onClick={() => setMenuOpen(false)}>Fármacia</Link>
-            <Link to="/promocoes" onClick={() => setMenuOpen(false)}>Promoções</Link>
+            <Link to="/">Início</Link>
+            <Link to="/caes">Para seu Cão</Link>
+            <Link to="/gatos">Para seu Gato</Link>
+            <Link to="/pets">Para Todos Pets</Link>
+            <Link to="/farmacia">Farmácia</Link>
+            <Link to="/promocoes">Promoções</Link>
           </nav>
         </div>
       )}
