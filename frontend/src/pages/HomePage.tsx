@@ -42,13 +42,39 @@ export default function HomePage({
         <div className="section-title">
           <div className="underline"></div>
         </div>
+
         <div className="main-content">
           <ProductsList products={products} addProductToCart={addProductToCart} />
         </div>
       </div>
 
       <PetFood />
-      <SubPharmacy />
+      <div className="page-inner-content">
+        <div className="section-title">
+          <h2 className="mb-4 text-2xl font-bold text-center text-purple-800">
+            Farmácias Products
+          </h2>
+          <div className="underline"></div>
+        </div>
+
+        <div className="main-content">
+          <ProductsList products={products} addProductToCart={addProductToCart} />
+        </div>
+
+        <SubPharmacy />
+      </div>
+      <div className="page-inner-content">
+        <div className="section-title">
+          <h2 className="mb-4 text-2xl font-bold text-center text-purple-800">
+            Pet Food
+          </h2>
+          <div className="underline"></div>
+        </div>
+
+        <div className="main-content">
+          <ProductsList products={products} addProductToCart={addProductToCart} />
+        </div>
+      </div>
       <PubliSocialMedia />
       <TestimonialsList />
     </div>
