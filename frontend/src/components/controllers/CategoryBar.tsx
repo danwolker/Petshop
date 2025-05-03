@@ -9,8 +9,7 @@ export default function CategoryBar() {
                 <Link to="/promocoes" className="font-semibold text-orange-600">Promoções</Link>
                 <Link to="/caes" className="hover:text-purple-700">Cachorros</Link>
                 <Link to="/gatos" className="hover:text-purple-700">Gatos</Link>
-                <Link to="/passaros" className="hover:text-purple-700">Pássaros</Link>
-                <Link to="/peixes" className="hover:text-purple-700">Peixes</Link>
+                <Link to="/passaros" className="hover:text-purple-700">Outros Pets</Link>
                 <Link to="/casa" className="hover:text-purple-700">Casa</Link>
                 <Link to="/jardim" className="hover:text-purple-700">Jardim</Link>
             </div>
