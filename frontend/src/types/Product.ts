@@ -9,4 +9,8 @@ export interface Product {
   porte?: string;
   idade?: string;
   sabor?: string;
-}
+  description?: string[];
+  rating?: number;
+  reviews?: number;
+  [key: string]: any; // Permite adicionar outras propriedades dinâmicas
+  }
