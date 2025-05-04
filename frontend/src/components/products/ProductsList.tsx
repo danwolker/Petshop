@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Product from "./Product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -5,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-interface Product {
+interface ProductProps {
   id: number;
   name: string;
   image: string;
@@ -13,7 +14,7 @@ interface Product {
 }
 
 interface ProductsListProps {
-  products: Product[];
+  products: ProductProps[];
   addProductToCart: (id: number) => void;
 }
 
@@ -23,7 +24,7 @@ export default function ProductsList({ products, addProductToCart }: ProductsLis
   );
 
   return (
-    <section className="py-10 px-4">
+    <section className="px-4 py-10">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
@@ -40,7 +41,9 @@ export default function ProductsList({ products, addProductToCart }: ProductsLis
       >
         {uniqueProducts.map((product) => (
           <SwiperSlide key={product?.id}>
-            <Product {...product!} addProductToCart={addProductToCart} />
+            <Link to={`/produto/${product?.id}`}>
+              <Product {...product!} addProductToCart={addProductToCart} />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

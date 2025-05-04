@@ -17,6 +17,9 @@ import Others from "./pages/menu/Others";
 import CasaPage from "./pages/menu/CasaPage";
 import JardimPage from "./pages/menu/JardimPage";
 
+// 👇 NOVO: Import da página de detalhe do produto
+import ProductDetailPage from "./pages/ProductDetailPage";
+
 import { Product } from "./types/Product";
 
 function App() {
@@ -56,6 +59,7 @@ function App() {
         cartTotal={cartTotal}
         removeProductFromCart={removeProductFromCart}
       />
+
       <Routes>
         <Route
           path="/"
@@ -71,6 +75,11 @@ function App() {
             />
           }
         />
+
+        {/* NOVA ROTA PARA DETALHE DO PRODUTO */}
+        <Route path="/produto/:id" element={<ProductDetailPage />} />
+
+        {/* DEMAIS ROTAS */}
         <Route path="/produtos" element={<ProductsPage products={products} addProductToCart={addProductToCart} />} />
         <Route path="/todos" element={<TodosPage products={products} addProductToCart={addProductToCart} />} />
         <Route path="/promocoes" element={<PromocoesPage products={products} addProductToCart={addProductToCart} />} />
@@ -80,6 +89,7 @@ function App() {
         <Route path="/casa" element={<CasaPage products={products} addProductToCart={addProductToCart} />} />
         <Route path="/jardim" element={<JardimPage products={products} addProductToCart={addProductToCart} />} />
       </Routes>
+
       <Footer />
     </div>
   );
