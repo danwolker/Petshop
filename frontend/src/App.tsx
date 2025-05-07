@@ -10,6 +10,8 @@ import Footer from "./components/sections/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import ComprasProgramadasPage from "./pages/ComprasProgramadasPage";
+import ServicosPetPage from "./pages/ServicosPetPage";
 
 // Menu Pages
 import TodosPage from "./pages/menu/TodosPage";
@@ -28,7 +30,6 @@ function App() {
   const [showSidebarCart, setShowSidebarCart] = useState(false);
   const [cartTotal, setCartTotal] = useState(0);
 
-  // Carrega produtos do JSON
   useEffect(() => {
     fetch("/Products.json")
       .then((res) => res.json())
@@ -36,7 +37,6 @@ function App() {
       .catch(console.error);
   }, []);
 
-  // Adiciona ao carrinho
   const addProductToCart = (id: number) => {
     const product = products.find((p) => p.id === id);
     if (!product || selectedProducts.some((p) => p.id === id)) return;
@@ -44,7 +44,6 @@ function App() {
     setCartTotal((prev) => prev + product.price);
   };
 
-  // Remove do carrinho
   const removeProductFromCart = (id: number) => {
     const product = selectedProducts.find((p) => p.id === id);
     if (!product) return;
@@ -55,7 +54,6 @@ function App() {
   return (
     <div className="pt-20">
       <Navbar setShowSidebarCart={setShowSidebarCart} selectedProducts={selectedProducts} />
-
       <SidebarCart
         setShowSidebarCart={setShowSidebarCart}
         showSidebarCart={showSidebarCart}
@@ -81,8 +79,10 @@ function App() {
         />
         <Route path="/produtos" element={<ProductsPage products={products} addProductToCart={addProductToCart} />} />
         <Route path="/produto/:id" element={<ProductDetailPage addProductToCart={addProductToCart} />} />
+        <Route path="/compras-programadas" element={<ComprasProgramadasPage />} />
+        <Route path="/servicos-pet" element={<ServicosPetPage />} />
 
-        {/* Páginas do menu */}
+        {/* Menu Pages */}
         <Route path="/todos" element={<TodosPage products={products} addProductToCart={addProductToCart} />} />
         <Route path="/promocoes" element={<PromocoesPage products={products} addProductToCart={addProductToCart} />} />
         <Route path="/caes" element={<CaesPage products={products} addProductToCart={addProductToCart} />} />

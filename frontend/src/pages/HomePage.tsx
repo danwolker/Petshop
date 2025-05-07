@@ -11,6 +11,8 @@ import PubliSocialMedia from "../components/sections/PubliSocialMedia";
 import TestimonialsList from "../components/sections/TestimonialsList";
 import BenefitsSection from "../components/sections/BenefitsSection";
 
+import MainLayout from "../layouts/MainLayout"; // <= IMPORTANTE
+
 interface Product {
   id: number;
   name: string;
@@ -45,13 +47,13 @@ export default function HomePage({
       />
       <CategoryBar />
 
-      {/* DELIVERY BANNER FIXADO LOGO ABAIXO DA CATEGORYBAR */}
+      {/* Delivery fixo fora do layout */}
       <div className="px-4 py-2 bg-white sm:px-6 lg:px-8">
         <DeliveryBanner />
       </div>
 
-      {/* RESTANTE DO CONTEÚDO DA PÁGINA */}
-      <div className="px-4 mt-8 space-y-6 sm:px-6 lg:px-8">
+      {/* Agora usamos o layout global para centralizar o conteúdo */}
+      <MainLayout>
         <Header />
         <SubHeader />
         <BenefitsSection />
@@ -64,11 +66,7 @@ export default function HomePage({
           <div className="w-24 h-1 mx-auto underline bg-purple-600 rounded"></div>
         </div>
 
-        <ProductsList
-          products={products}
-          addProductToCart={addProductToCart}
-        />
-
+        <ProductsList products={products} addProductToCart={addProductToCart} />
         <PetFood />
 
         <div className="section-title">
@@ -78,10 +76,7 @@ export default function HomePage({
           <div className="w-24 h-1 mx-auto underline bg-purple-600 rounded"></div>
         </div>
 
-        <ProductsList
-          products={products}
-          addProductToCart={addProductToCart}
-        />
+        <ProductsList products={products} addProductToCart={addProductToCart} />
         <SubPharmacy />
 
         <div className="section-title">
@@ -91,14 +86,11 @@ export default function HomePage({
           <div className="w-24 h-1 mx-auto underline bg-purple-600 rounded"></div>
         </div>
 
-        <ProductsList
-          products={products}
-          addProductToCart={addProductToCart}
-        />
+        <ProductsList products={products} addProductToCart={addProductToCart} />
 
         <PubliSocialMedia />
         <TestimonialsList />
-      </div>
+      </MainLayout>
     </>
   );
 }

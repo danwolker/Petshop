@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Product from "./Product";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -26,7 +26,7 @@ export default function ProductsList({ products, addProductToCart }: ProductsLis
   return (
     <section className="px-4 py-10">
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Navigation, Autoplay]}
         spaceBetween={20}
         slidesPerView={1}
         breakpoints={{

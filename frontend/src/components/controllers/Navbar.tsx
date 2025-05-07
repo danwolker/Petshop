@@ -31,9 +31,10 @@ export default function Navbar({ setShowSidebarCart, selectedProducts }: NavbarP
             <img
               src="/images/logoprincipal.png"
               alt="Das Gurias"
-              className="h-10 mx-auto md:mx-0"
+              className="h-16 mx-auto md:mx-0"
             />
           </Link>
+
         </div>
 
         {/* Campo de busca (desktop apenas) */}

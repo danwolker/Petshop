@@ -2,14 +2,20 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-purple-900 text-white mt-12">
-      <div className="max-w-7xl mx-auto p-6 grid md:grid-cols-2 gap-6">
-        <div>
-          <img src="/images/logoprincipal.png" alt="Agropet das Gurias" className="h-14 mb-2" />
-          <p className="text-sm">MENSAGEM DA EMPRESA REFERENTE À MARCA</p>
+    <footer className="mt-12 text-white bg-purple-900">
+      <div className="grid items-center gap-6 p-6 mx-auto max-w-7xl md:grid-cols-2">
+        {/* LOGO CENTRALIZADA VERTICAL E HORIZONTAL */}
+        <div className="flex justify-center md:justify-start">
+          <img
+            src="/images/logoprincipal.png"
+            alt="Agropet das Gurias"
+            className="object-contain h-24 sm:h-28 md:h-32"
+          />
         </div>
-        <div>
-          <h3 className="font-bold mb-2">Links úteis</h3>
+
+        {/* LINKS ÚTEIS */}
+        <div className="text-center md:text-left">
+          <h3 className="mb-2 text-lg font-bold">Links úteis</h3>
           <ul className="space-y-1 text-sm">
             <li><Link to="/">Cupons de Desconto</Link></li>
             <li><Link to="/">Depoimentos</Link></li>
@@ -18,7 +24,8 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="text-center text-xs py-4 border-t border-purple-800">
+
+      <div className="py-4 text-xs text-center border-t border-purple-800">
         © 2025 - Agropet das Gurias - Direitos Autorais
       </div>
     </footer>
