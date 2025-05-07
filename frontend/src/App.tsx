@@ -52,8 +52,12 @@ function App() {
   };
 
   return (
-    <div className="pt-20">
-      <Navbar setShowSidebarCart={setShowSidebarCart} selectedProducts={selectedProducts} />
+    <div className="flex flex-col min-h-screen">
+      <Navbar
+        setShowSidebarCart={setShowSidebarCart}
+        selectedProducts={selectedProducts}
+      />
+
       <SidebarCart
         setShowSidebarCart={setShowSidebarCart}
         showSidebarCart={showSidebarCart}
@@ -62,35 +66,48 @@ function App() {
         removeProductFromCart={removeProductFromCart}
       />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              products={products}
-              showSidebarCart={showSidebarCart}
-              setShowSidebarCart={setShowSidebarCart}
-              addProductToCart={addProductToCart}
-              selectedProducts={selectedProducts}
-              cartTotal={cartTotal}
-              removeProductFromCart={removeProductFromCart}
-            />
-          }
-        />
-        <Route path="/produtos" element={<ProductsPage products={products} addProductToCart={addProductToCart} />} />
-        <Route path="/produto/:id" element={<ProductDetailPage addProductToCart={addProductToCart} />} />
-        <Route path="/compras-programadas" element={<ComprasProgramadasPage />} />
-        <Route path="/servicos-pet" element={<ServicosPetPage />} />
+      <main className="flex-grow pt-20">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                products={products}
+                showSidebarCart={showSidebarCart}
+                setShowSidebarCart={setShowSidebarCart}
+                addProductToCart={addProductToCart}
+                selectedProducts={selectedProducts}
+                cartTotal={cartTotal}
+                removeProductFromCart={removeProductFromCart}
+              />
+            }
+          />
+          <Route
+            path="/produtos"
+            element={
+              <ProductsPage
+                products={products}
+                addProductToCart={addProductToCart}
+              />
+            }
+          />
+          <Route
+            path="/produto/:id"
+            element={<ProductDetailPage addProductToCart={addProductToCart} />}
+          />
+          <Route path="/compras-programadas" element={<ComprasProgramadasPage />} />
+          <Route path="/servicos-pet" element={<ServicosPetPage />} />
 
-        {/* Menu Pages */}
-        <Route path="/todos" element={<TodosPage products={products} addProductToCart={addProductToCart} />} />
-        <Route path="/promocoes" element={<PromocoesPage products={products} addProductToCart={addProductToCart} />} />
-        <Route path="/caes" element={<CaesPage products={products} addProductToCart={addProductToCart} />} />
-        <Route path="/gatos" element={<GatosPage products={products} addProductToCart={addProductToCart} />} />
-        <Route path="/passaros" element={<Others products={products} addProductToCart={addProductToCart} />} />
-        <Route path="/casa" element={<CasaPage products={products} addProductToCart={addProductToCart} />} />
-        <Route path="/jardim" element={<JardimPage products={products} addProductToCart={addProductToCart} />} />
-      </Routes>
+          {/* Menu Pages */}
+          <Route path="/todos" element={<TodosPage products={products} addProductToCart={addProductToCart} />} />
+          <Route path="/promocoes" element={<PromocoesPage products={products} addProductToCart={addProductToCart} />} />
+          <Route path="/caes" element={<CaesPage products={products} addProductToCart={addProductToCart} />} />
+          <Route path="/gatos" element={<GatosPage products={products} addProductToCart={addProductToCart} />} />
+          <Route path="/passaros" element={<Others products={products} addProductToCart={addProductToCart} />} />
+          <Route path="/casa" element={<CasaPage products={products} addProductToCart={addProductToCart} />} />
+          <Route path="/jardim" element={<JardimPage products={products} addProductToCart={addProductToCart} />} />
+        </Routes>
+      </main>
 
       <Footer />
     </div>
