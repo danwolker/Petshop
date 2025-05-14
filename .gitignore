@@ -1,0 +1,56 @@
+# Ignore arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignore IDEs e editores
+.vscode/
+.idea/
+*.sw?
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Ambiente local
+.env
+.env.local
+.env.*.local
+
+# node_modules e artefatos de build (frontend)
+frontend/node_modules/
+frontend/.yarn/cache/
+frontend/.yarn/unplugged/
+frontend/.yarn/build-state.yml
+frontend/.pnp.*
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/.turbo/
+frontend/.parcel-cache/
+frontend/.vite/
+
+# Arquivos gerados por yarn berry
+frontend/.yarn/install-state.gz
+
+# Arquivos de lock (se não quiser versionar)
+# yarn.lock
+# package-lock.json
+
+# Arquivos PHP temporários e caches (backend)
+backend/vendor/
+backend/.env
+backend/.env.local
+backend/.env.dev
+backend/.DS_Store
+
+# Arquivos de zona do Windows (não são úteis)
+*.Zone.Identifier
+
+# Arquivo de estrutura gerado
+estrutura.txt
