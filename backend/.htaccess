@@ -1,0 +1,35 @@
+# --------------------------
+# HABILITAR REESCRITA DE URLS (se necessário)
+# --------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirecionar requisições que não sejam arquivos/diretórios reais para index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ api/index.php [QSA,L]
+</IfModule>
+
+# --------------------------
+# PERMITIR CORS (para consumir com React)
+# --------------------------
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# --------------------------
+# BLOQUEAR ACESSO A ARQUIVOS SENSÍVEIS
+# --------------------------
+<FilesMatch "^(\.env|composer\.json|composer\.lock|\.gitignore)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear acesso direto à pasta vendor
+RedirectMatch 403 ^/vendor/
+
+# --------------------------
+# DESATIVAR LISTAGEM DE DIRETÓRIOS
+# --------------------------
+Options -Indexes
