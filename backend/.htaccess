@@ -4,10 +4,11 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    RewriteBase /petshop-backend/
     # Redirecionar requisições que não sejam arquivos/diretórios reais para index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^ api/index.php [QSA,L]
+    RewriteRule ^(.+)$ index.php [QSA,L]
 </IfModule>
 
 # --------------------------
