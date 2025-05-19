@@ -86,8 +86,65 @@ yarn install
 
 ---
 
-## 🧑‍💻 Contribuindo
+# 🧰 Configuração do Ambiente de Desenvolvimento - BACKEND (PHP)
 
-Sinta-se livre para abrir issues, sugerir melhorias ou enviar pull requests. 💬
+📌 Requisitos
+- Windows com XAMPP instalado
+- WSL habilitado e funcionando (com Ubuntu)
+- Acesso ao projeto com a pasta backend/
+- Composer instalado no WSL (composer -V)
+- VS Code (com integração WSL opcional)
 
----
+## 1. Instalar e configurar XAMPP
+### 🛠 1.1 Mudar a porta padrão do MySQL para `3307` (caso a porta `3306` esteja ocupada)
+
+Edite os seguintes arquivos (de `3306` para `3307`):
+
+#### `C:\xampp\mysql\bin\my.ini`
+```ini
+port=3307
+```
+
+#### `C:\xampp\php\php.ini`
+Procure e edite as seguintes linhas (de `3306` para `3307`):
+```ini
+mysqli.default_port=3307
+pdo_mysql.default_port=3307
+mysql.default_port=3307
+```
+
+Reinicie o XAMPP: abra o XAMPP Control Panel, inicie o Apache e o MySQL, e verifique se o MySQL está rodando na porta 3307.
+
+## 2. Criar link simbólico no Windows apontando para a pasta `backend/` no WSL
+
+### 2.1. Descubra o caminho completo no WSL
+Exemplo:
+```bash	
+\\wsl.localhost\Ubuntu\home\laila\Programming\Projects\Petshop\backend
+```
+### 2.2. Criar o link simbólico no Windows (CMD como administrador)
+```bash
+mklink /D "C:\xampp\htdocs\petshop-backend" "\\wsl.localhost\Ubuntu\home\laila\Programming\Projects\Petshop\backend"
+```
+
+Esse link torna o backend acessível via navegador em:
+```bash
+http://localhost/petshop-backend/api/index.php
+```
+
+## 3. Instalar Composer no WSL (caso ainda não tenha)
+```
+sudo apt install composer
+```
+
+## 4. Acessar pasta `backend/` e instalar dependências
+```bash
+cd backend
+composer install
+```
+
+## 5. Testar o ambiente
+Acessar no navegador:
+```bash
+http://localhost/petshop-backend/api/products.php
+```
