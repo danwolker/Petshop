@@ -32,7 +32,7 @@ export default function Others({ products, addProductToCart }: Props) {
                 <SidebarFilter />
                 <div className="flex-1">
                     <OrderSelector order={order} setOrder={setOrder} />
-                    <ProductGrid products={products} addProductToCart={addProductToCart} />
+                    <ProductGrid />
                 </div>
             </div>
             <SubPharmacy />

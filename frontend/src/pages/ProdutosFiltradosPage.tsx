@@ -68,7 +68,7 @@ export default function ProdutosFiltradosPage() {
                 <FilterSidebar filters={filters} setFilters={setFilters} />
                 <div className="flex-1">
                     <SortDropdown sortBy={sortBy} setSortBy={setSortBy} />
-                    <ProductGrid products={filtered} addProductToCart={addToCart} />
+                    <ProductGrid />
 
                 </div>
             </div>
