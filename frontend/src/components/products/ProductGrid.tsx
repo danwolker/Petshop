@@ -1,14 +1,33 @@
-// src/components/products/ProductGrid.tsx
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { Product } from "../../types/Product";
+import { fetchProducts } from "../../services/products";
 
-interface ProductGridProps {
-    products: Product[];
-    addProductToCart: (id: number) => void;
-}
+export default function ProductGrid() {
 
-export default function ProductGrid({ products, addProductToCart }: ProductGridProps) {
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchProducts()
+            .then((data) => setProducts(data))
+            .catch((error) => console.error("Erro ao buscar produtos:", error))
+            .finally(() => setLoading(false));
+    }, []);
+
+    const addProductToCart = (id: number) => {
+        // Lógica para adicionar o produto ao carrinho
+        console.log(`Produto ${id} adicionado ao carrinho`);
+    }
+
+    if(loading) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <p className="text-gray-500">Carregando produtos...</p>
+            </div>
+        );
+    }
+
     return (
         <div className="grid gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {products.map((product) => (
