@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Product from "./Product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -41,9 +40,7 @@ export default function ProductsList({ products, addProductToCart }: ProductsLis
       >
         {uniqueProducts.map((product) => (
           <SwiperSlide key={product?.id}>
-            <Link to={`/produto/${product?.id}`}>
               <Product {...product!} addProductToCart={addProductToCart} />
-            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
