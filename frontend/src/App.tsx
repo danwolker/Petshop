@@ -24,6 +24,8 @@ import JardimPage from "./pages/menu/JardimPage";
 
 import { Product } from "./types/Product";
 
+import { fetchProducts } from "./services/products";
+
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
@@ -31,9 +33,8 @@ function App() {
   const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
-    fetch("/Products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.products))
+    fetchProducts()
+      .then((data) => setProducts(data))
       .catch(console.error);
   }, []);
 
